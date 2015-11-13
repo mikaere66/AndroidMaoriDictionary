@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/main_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/main_text_view" />
+
+    <AutoCompleteTextView
+        android:id="@+id/main_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
+        android:hint="@string/edit_text_hint"
+        android:imeOptions="actionSearch"
+        android:singleLine="true" />
+
+    <RadioGroup android:id="@+id/search_for"
+        android:checkableBehavior="single"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="21dp">
+
+        <RadioButton android:id="@+id/maori_to_english"
+            android:title="@string/m2e_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/m2e_name"
+            android:layout_marginTop="5dp"
+            android:checked="true" />
+
+        <RadioButton android:id="@+id/english_to_maori"
+            android:title="@string/e2m_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:layout_marginTop="5dp"
+            android:text="@string/e2m_name" />
+
+    </RadioGroup>
+
+    <Spinner
+        android:id="@+id/search_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:entries="@array/search_type_array"
+        android:prompt="@string/search_type_prompt"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="21dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/browse_all_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/browse_all_button"
+            android:layout_marginTop="10dp"
+            android:onClick="browseAll" />
+
+        <Button
+            android:id="@+id/random_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/random_button"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/browse_all_button"
+            android:layout_toEndOf="@+id/browse_all_button"
+            android:onClick="goRandom" />
+
+        <Button
+            android:id="@+id/main_search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_search_button"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/random_button"
+            android:layout_toEndOf="@+id/random_button" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/sticker"
+        android:baselineAlignBottom="false"
+        android:cropToPadding="false"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:contentDescription="@string/flag_description" />
+
+</LinearLayout>

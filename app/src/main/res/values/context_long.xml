@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="context_text_1">Adjective (a.)\u00A0:
+        \n1. a word that expresses an attribute of something
+        \n2. the word class that qualifies nouns</string>
+    <string name="context_text_2">Adverb (adv.)\u00A0:
+        \n1. the word class that qualifies verbs or clauses
+        \n2. a word that modifies something other than a noun</string>
+    <string name="context_text_3">Conjunction (conj.)\u00A0:
+        \n1. an uninflected function word that serves to conjoin words, phrases, clauses or sentences
+        \n2. the grammatical relation between linguistic units (words, phrases or clauses) that are
+        connected by a conjunction</string>
+    <string name="context_text_4">Definitive (def.)\u00A0:
+        \na determiner (as \'the\' in English) that indicates specificity of reference</string>
+    <string name="context_text_5">Exclamation (excl.)\u00A0:
+        \n1. an abrupt excited utterance
+        \n2. a loud complaint, protest or reproach</string>
+    <string name="context_text_6">Indefinite Pronoun (pron. indef.)\u00A0:
+        \nrefers to non-specific beings, objects, or places</string>
+    <string name="context_text_7">Interjection (int.)\u00A0:
+        \nan informal farewell remark</string>
+    <string name="context_text_8">Interrogative Pronoun (int. pron.)\u00A0:
+        \na function word used to ask a question, such as what, when, where, who, why and how</string>
+    <string name="context_text_9">Interrogative Adverb (inter. adv.)\u00A0:
+        \na type of function word or expression that stands in for (expresses the same content as) another word,
+        phrase clause or sentence where the meaning is recoverable from the context</string>
+    <string name="context_text_10">Intransitive Verb (v.i.)\u00A0:
+        \na verb that does not require or cannot take a direct object</string>
+    <string name="context_text_11">Literal Noun (l.n.)\u00A0:
+        \nlimited to the explicit meaning of a word</string>
+    <string name="context_text_12">Noun (n.) :
+        \n1. a content word that can be used to refer to a person, place, thing, quality, or action
+        \n2. the word class that can serve as the subject or object of a verb, the object of a preposition,
+        or in apposition</string>
+    <string name="context_text_13">Nominal Prefix (nom.) :
+        \nadded to the front of a word, a phrase that can function as the subject or object of a verb</string>
+    <string name="context_text_14">Numeric (num.) :
+        \n1. of or relating to or denoting numbers
+        \n2. measured or expressed in numbers</string>
+    <string name="context_text_15">Particle (part.)\u00A0:
+        \na function word that can be used in English to form phrasal verbs</string>
+    <string name="context_text_16">Passive (pass.)\u00A0:
+        \nexpressing that the subject of the sentence is the patient of the action denoted by the verb</string>
+    <string name="context_text_17">Personal Pronoun (pers. pron.)\u00A0:
+        \nindicating grammatical person</string>
+    <string name="context_text_18">Plural (pl.)\u00A0:
+        \n1. composed of more than one member, set, or king
+        \n2. grammatical number category referring to two or more items or units</string>
+    <string name="context_text_19">Possessive Particle (poss. part.)\u00A0:
+        \nserving to express or indicate possession</string>
+    <string name="context_text_20">Possessive Particle, Plural (poss. part. pl.)\u00A0:
+        \n(see above, plural) </string>
+    <string name="context_text_21">Prefix (pref.)\u00A0:
+        \nan affix that is added in front of a word</string>
+    <string name="context_text_22">Preposition (prep.)\u00A0:
+        \n1. a function word that combines with a noun or pronoun or noun phrase to form a prepositional
+        phrase that can have an adverbial relation to some other word
+        \n2. the placing of one linguistic element before another (as placing a modifier before a word
+        it modifies in a sentence or placing an affix before the base to which it is attached</string>
+    <string name="context_text_23">Pronoun (pron.)\u00A0:
+        \na function word that is used in place of a noun or noun phrase</string>
+    <string name="context_text_24">Relative Pronoun (rel. pron.)\u00A0:
+        \na pronoun (as \'that\' or \'which\' or \'who\') that introduces a
+        relative clause referring to some antecedent</string>
+    <string name="context_text_25">Second Person Singular (art.)\u00A0:
+        \npronouns and verbs used to refer to the person addressed by the language in which they occur</string>
+    <string name="context_text_26">Second Person Plural (art. pl.)\u00A0:
+        \n</string>
+    <string name="context_text_27">Single Possessive Particle (sgl.pos.part.)\u00A0:
+        \n</string>
+    <string name="context_text_28">Single Possessive Pronoun (sgl.pos.pron.)\u00A0:
+        \n</string>
+    <string name="context_text_29">Suffix (suff.)\u00A0:
+        \nan affix that is added at the end of the word</string>
+    <string name="context_text_30">Verb (v.)\u00A0:
+        \n1. the word class that serves as the predicate of a sentence
+        \n2. a content word that denotes an action, occurrence, or state of existence</string>
+    <string name="context_text_31">Transitive Verb (v.t.)\u00A0:
+        \na verb that requires a direct object to complete the meaning</string>
+</resources>

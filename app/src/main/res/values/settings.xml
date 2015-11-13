@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="textView_flipDuration">Flip Duration
+        \n(shorter time means faster animation)</string>
+    <string-array name="flip_duration">
+        <item>100ms</item>
+        <item>150ms</item>
+        <item>200ms</item>
+        <item>250ms</item>
+        <item>300ms</item>
+        <item>350ms</item>
+        <item>400ms</item>
+        <item>450ms</item>
+    </string-array>
+    <string name="show_scroll_initial">Show/hide first initial on scrolling Browse All
+        \n(can get in the way when filtering results)</string>
+    <string name="show_scroll">Show</string>
+    <string name="hide_scroll">Hide</string>
+    <string name="swipe_or_button">Other settings, like auto-complete
+        history, last-used-language, and search-type are saved
+        throughout normal use of the app.</string>
+</resources>

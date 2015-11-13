@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="contexts">
+        <item>context1</item>
+        <item>context2</item>
+        <item>context3</item>
+        <item>context4</item>
+        <item>context5</item>
+    </string-array>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="flip_text">Switch Language</string>
+    <string name="textView0">To filter results, tap here to toggle soft keyboard. Press
+        back to resume full list. For hardware keyboard, just start typing.</string>
+    <string name="flip_to">[ Try</string>
+    <string name="flip_tr"> ]</string>
+    <string name="flip_ttl">Browse All</string>
+    <string name="flip_sub_ttl">Swipe left/right to Switch Language</string>
+    <string name="back_to_top">[ Back to Top ]</string>
+</resources>

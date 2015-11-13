@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="context_hint_1">a.</string>
+    <string name="context_hint_2">adv.</string>
+    <string name="context_hint_3">conj.</string>
+    <string name="context_hint_4">def.</string>
+    <string name="context_hint_5">excl.</string>
+    <string name="context_hint_6">pron. indef.</string>
+    <string name="context_hint_7">int.</string>
+    <string name="context_hint_8">int. pron.</string>
+    <string name="context_hint_9">inter. adv.</string>
+    <string name="context_hint_10">v.i.</string>
+    <string name="context_hint_11">l.n.</string>
+    <string name="context_hint_12">n.</string>
+    <string name="context_hint_13">nom.</string>
+    <string name="context_hint_14">num.</string>
+    <string name="context_hint_15">part.</string>
+    <string name="context_hint_16">pass.</string>
+    <string name="context_hint_17">pers. pron.</string>
+    <string name="context_hint_18">pl.</string>
+    <string name="context_hint_19">poss. part.</string>
+    <string name="context_hint_20">poss. part. pl.</string>
+    <string name="context_hint_21">pref.</string>
+    <string name="context_hint_22">prep.</string>
+    <string name="context_hint_23">pron.</string>
+    <string name="context_hint_24">rel. pron.</string>
+    <string name="context_hint_25">art.</string>
+    <string name="context_hint_26">art. pl.</string>
+    <string name="context_hint_27">sgl.pos.part.</string>
+    <string name="context_hint_28">sgl.pos.pron.</string>
+    <string name="context_hint_29">suff.</string>
+    <string name="context_hint_30">v.</string>
+    <string name="context_hint_31">v.t.</string>
+</resources>
+

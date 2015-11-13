@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="context_title">Language Context</string>
+    <string name="context_title_1">Adjective</string>
+    <string name="context_title_2">Adverb</string>
+    <string name="context_title_3">Conjunction</string>
+    <string name="context_title_4">Definitive</string>
+    <string name="context_title_5">Exclamation</string>
+    <string name="context_title_6">Interjection</string>
+    <string name="context_title_7">Indefinite Pronoun</string>
+    <string name="context_title_8">Interpreted Pronoun</string>
+    <string name="context_title_9">Interrogative Adverb</string>
+    <string name="context_title_10">Intransitive Verb</string>
+    <string name="context_title_11">Literal Noun</string>
+    <string name="context_title_12">Noun</string>
+    <string name="context_title_13">Nominal prefix</string>
+    <string name="context_title_14">Numeric</string>
+    <string name="context_title_15">Particle</string>
+    <string name="context_title_16">Passive</string>
+    <string name="context_title_17">Personal Pronoun</string>
+    <string name="context_title_18">Plural</string>
+    <string name="context_title_19">Possessive Particle</string>
+    <string name="context_title_20">Possessive Particle, Plural</string>
+    <string name="context_title_21">Prefix</string>
+    <string name="context_title_22">Preposition</string>
+    <string name="context_title_23">Pronoun</string>
+    <string name="context_title_24">Relative pronoun</string>
+    <string name="context_title_25">Second Person Singular</string>
+    <string name="context_title_26">Second Person Plural</string>
+    <string name="context_title_27">Single Possessive Particle</string>
+    <string name="context_title_28">Single Possessive Pronoun</string>
+    <string name="context_title_29">Suffix</string>
+    <string name="context_title_30">Verb</string>
+    <string name="context_title_31">Transitive Verb</string>
+</resources>

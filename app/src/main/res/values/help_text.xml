@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="help_text_1">This app is meant to be as simple as possible to use
+        &#8230; hence, to search for a Māori word/phrase, please enter it WITHOUT
+        macrons, i.e. just type in \"a\u00A0e\u00A0i\u00A0o\u00A0u\" instead of
+        \"ā\u00A0ē\u00A0ī\u00A0ō\u00A0ū\" &#8230; you will be shown all variants
+        anyway, IF that word/phrase exists here</string>
+    <string name="help_text_2">The built-in FUZZY LOGIC feature has 3 options.
+        Exact Match is self-explanatory &#8230; Fuzzy Logic by itself shows SOME words
+        beginning OR ending with the word/phrase you entered, whereas Extra Fuzzy shows
+        ALL words containing your search word/phrase ANYWHERE in the selected language,
+        again IF those words are here in the database</string>
+    <string name="help_text_3">The BROWSE ALL button shows both ENTIRE
+        lists of Māori to English and English to Māori translations &amp;
+        allows you to \"flip\" between the two</string>
+    <string name="help_text_4">Pressing the RANDOM button will show 5 words
+        (chosen at random) from the selected language</string>
+    <string name="help_text_5">You can filter
+        the search results if there are more than 10 listings. If your device has a soft
+        keyboard, tap the area that says Filter results. If you have a hardware
+        keyboard, just start typing. Another feature is the saving of your Search
+        preferences for next time; and the third is AutoComplete history.</string>
+    <string name="help_text_6">Your search preferences are saved for use next time you start the app</string>
+    <string name="help_text_7">Your search history is saved for use next time you start the
+        app. After typing a few letters, a popup menu will show under the Textbox if there
+        are relevant suggestions from previous searches</string>
+    <string name="help_text_8">You can easily bookmark favourite words for later viewing. To add a word
+        as a new favourite, simply long-press the listing and choose that option.
+        You can access all your favourites in one place by tapping the Māori
+        flag on the \"home\" page. To remove a favourite from that list,
+        long-press the word, and choose the appropriate option</string>
+    <string name="help_text_9">Also, you can choose to Share a word
+        via Email, Facebook, Text or whatever. Just choose that option from the same pop-up
+        menu. Options vary according to the apps you have installed on your device</string>
+    <string name="help_text_10">Note that the left-arrow on the title bar is actually
+        a home button, so be aware that this will return you directly to the \"home\"
+        page, bypassing any other screen you may have been viewing in the meantime</string>
+</resources>

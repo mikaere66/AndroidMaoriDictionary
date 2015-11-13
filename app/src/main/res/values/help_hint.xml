@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="help_hint_1">Macrons are inserted automatically.</string>
+    <string name="help_hint_2">Choose exact match or use fuzzy logic.</string>
+    <string name="help_hint_3">Be sure to check out the flip animation.</string>
+    <string name="help_hint_4">Try some random words from either language.</string>
+    <string name="help_hint_5">Filter your search results to limit the list.</string>
+    <string name="help_hint_6">Preferences are saved for use next time.</string>
+    <string name="help_hint_7">Search history is saved for use next time.</string>
+    <string name="help_hint_8">Add words to favourites for future reference.</string>
+    <string name="help_hint_9">Share a word definition with friends or family.</string>
+    <string name="help_hint_10">Don\'t be fooled by that fancy back-arrow.</string>
+</resources>
