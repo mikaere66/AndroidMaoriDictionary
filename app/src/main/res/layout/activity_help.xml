@@ -14,20 +14,30 @@
         android:onClick="expandAll"
         android:layout_alignParentTop="false"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="6dp"
-        android:minWidth="165dp"/>
+        android:layout_marginStart="6dp"
+        android:minWidth="105dp"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/help_collapse_all"
         android:id="@+id/collapse_all_button"
+        android:text="@string/help_collapse"
+        android:layout_centerHorizontal="true"
         android:onClick="collapseAll"
+        android:minWidth="105dp"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/help_back_to_top"
+        android:id="@+id/back_to_top_button"
+        android:onClick="backToTop"
         android:layout_alignParentTop="false"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="6dp"
-        android:minWidth="165dp"/>
+        android:layout_marginEnd="6dp"
+        android:minWidth="105dp"/>
 
     <com.idunnololz.widgets.AnimatedExpandableListView
         android:id="@+id/listView"

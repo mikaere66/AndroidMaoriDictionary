@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="help_expand_all">[ Expand All ]</string>
-    <string name="help_back_to_top">[ Back to Top ]</string>
-    <string name="help_collapse_all">[ Collapse All ]</string>
+    <string name="help_expand_all">[ Expand ]</string>
+    <string name="help_collapse">[ Collapse ]</string>
+    <string name="help_back_to_top">[ Back Up ]</string>
     <string name="help_title_1">Macrons</string>
     <string name="help_title_2">Fuzzy Logic</string>
     <string name="help_title_3">Browse All</string>

@@ -22,8 +22,6 @@ import java.util.Objects;
 
 public class HelpActivity extends AppCompatActivity {
     private AnimatedExpandableListView listView;
-    private Button expandAll;
-    private Boolean isExpanded;
     private Integer numVars;
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
@@ -32,12 +30,10 @@ public class HelpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
-        expandAll = (Button) findViewById(R.id.expand_all_button);
         /* Number of NORMAL help items, as opposed to the number of
            LANGUAGE-CONTEXT help items, which is currently 31. Note :
            This is an EXACT count; all for loops are based on <= numVars */
         Integer defaults = 10; // Number of normal-help entries in values/help_* files
-        isExpanded = false;
 
         Bundle b = getIntent().getExtras();
         String whichList = b.getString("whichList", "help"); // Defaults to NORMAL help/usage
@@ -98,35 +94,30 @@ public class HelpActivity extends AppCompatActivity {
         });
     }
 
-    // Added by MM
     public void expandAll(View view) {
         try {
-            if (!isExpanded) {
-                for(int i = 0; i <= numVars; i++) {
-                    if (!listView.isGroupExpanded(i)) listView.expandGroupWithAnimation(i);
-                }
-                expandAll.setText(getString(R.string.help_back_to_top));
-                isExpanded = true;
-            }
-            listView.setSelection(0);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                listView.setSelectionFromTop(0, 0);
+            for(int i = 0; i <= numVars; i++) {
+                if (!listView.isGroupExpanded(i)) listView.expandGroupWithAnimation(i);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // Added by MM
     public void collapseAll(View view) {
         try {
             for(int i = 0; i <= numVars; i++) {
                 if (listView.isGroupExpanded(i)) listView.collapseGroupWithAnimation(i);
             }
-            expandAll.setText(getString(R.string.help_expand_all));
-            isExpanded = false;
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void backToTop(View view) {
+        listView.setSelection(0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            listView.setSelectionFromTop(0, 0);
         }
     }
 
