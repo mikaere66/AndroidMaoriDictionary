@@ -86,7 +86,6 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
         mMaoriList = (ListView) findViewById(R.id.list_ma);
         mMaoriList.setOnScrollListener(this);
         mEnglishList = (ListView) findViewById(R.id.list_en);
-
         mEnglishList.setOnScrollListener(this);
         textView0 = (TextView) findViewById(R.id.textView0);
         flipButton = (Button) findViewById(R.id.flip_button);
@@ -333,7 +332,10 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
         List<String> myFaves = new ArrayList<>();
         List<String> myTables = new ArrayList<>();
         SharedPreferences mSharedPreferences = getSharedPreferences("Faves", Context.MODE_PRIVATE);
-        int arraySize = mSharedPreferences.getInt("Faves_size", 0);
+        int arraySize = 0;
+        if (mSharedPreferences != null) {
+            arraySize = mSharedPreferences.getInt("Faves_size", 0);
+        }
         String[] thisText = whichText.split(" : ", 2); // Limit array to a size of 2
         String thisTable;
         if (thisText[0].substring(0, 5).equals(getString(R.string.maori))) {
@@ -342,7 +344,10 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
             thisTable = getString(R.string.e2m_table);
         }
         String thisWord = thisText[1].substring(0, thisText[1].indexOf("\n")).trim();
-        SharedPreferences.Editor e = mSharedPreferences.edit();
+        SharedPreferences.Editor e = null;
+        if (mSharedPreferences != null) {
+            e = mSharedPreferences.edit();
+        }
         for (int i = 0; i < arraySize; i++) {
             String addFave = mSharedPreferences.getString("Favourite_" + i, null);
             myFaves.add(addFave);
@@ -353,16 +358,30 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
             myFaves.add(thisWord);
             myTables.add(thisTable);
             for (int i=0; i < myFaves.size(); i++) {
-                e.remove("Faves_size");
-                e.putInt("Faves_size", myFaves.size());
+                if (e != null) {
+                    e.remove("Faves_size");
+                }
+                if (e != null) {
+                    e.putInt("Faves_size", myFaves.size());
+                }
 
-                e.remove("Favourite_" + i);
-                e.putString("Favourite_" + i, myFaves.get(i));
+                if (e != null) {
+                    e.remove("Favourite_" + i);
+                }
+                if (e != null) {
+                    e.putString("Favourite_" + i, myFaves.get(i));
+                }
 
-                e.remove("Table_" + i);
-                e.putString("Table_" + i, myTables.get(i));
+                if (e != null) {
+                    e.remove("Table_" + i);
+                }
+                if (e != null) {
+                    e.putString("Table_" + i, myTables.get(i));
+                }
             }
-            e.apply();
+            if (e != null) {
+                e.apply();
+            }
         } else {
             Toast.makeText(FlipActivity.this, "This word is ALREADY in your favourites!", Toast.LENGTH_SHORT).show();
         }
@@ -387,10 +406,20 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
     protected void onResume() {
         super.onResume();
         SharedPreferences mSharedPreferences = getSharedPreferences("Prefs", Context.MODE_PRIVATE);
-        String flipString = mSharedPreferences.getString("flipDuration", "250ms");
-        flipDuration = Long.parseLong(flipString.replaceAll("ms", ""));
-        String mPreference = mSharedPreferences.getString("showScroll", "Show");
-        if (searchType == 0) mReady = !mPreference.equals("Hide");
+        String flipString = null;
+        if (mSharedPreferences != null) {
+            flipString = mSharedPreferences.getString("flipDuration", "250ms");
+        }
+        if (flipString != null) {
+            flipDuration = Long.parseLong(flipString.replaceAll("ms", ""));
+        }
+        String mPreference = null;
+        if (mSharedPreferences != null) {
+            mPreference = mSharedPreferences.getString("showScroll", "Show");
+        }
+        if (searchType == 0) if (mPreference != null) {
+            mReady = !mPreference.equals("Hide");
+        }
     }
 
     public void flipIt(View v) {
