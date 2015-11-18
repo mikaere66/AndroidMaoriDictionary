@@ -3,4 +3,5 @@
     <string name="add">To add a word to your Favourites, long-press the word</string>
     <string name="rem">To remove a word from your favourites, long-press the word &amp; choose Yes when prompted. If there is more than one entry for a word, remove the shorter entry</string>
     <string name="nil">No favourites found &#8230; to add some while viewing ANY list, long press a word and choose Yes when prompted</string>
+    <string name="alreadyFav">This word is already in your favourites</string>
 </resources>

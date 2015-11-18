@@ -57,7 +57,7 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
     private boolean mReady;
     private char mPrevLetter = Character.MIN_VALUE;
     private SQLiteDatabase newDB; // Create instance of database
-    // Set up first array for Maori ListView Adapter
+    // Set up first array for the Maori ListView Adapter
     private final ArrayList<String> mResults = new ArrayList<>();
     // Set up second array for English ListView Adapter
     private final ArrayList<String> eResults = new ArrayList<>();
@@ -198,7 +198,7 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
                     whereString = whereLike + "'%" + searchFor + "%'";
                     queryCursor = newDB.rawQuery(selectFrom + whichTable + whereString + orderBy, null);
                 } else if (searchFor.length() == 0) { // Browse All
-                    String queryString = "SELECT * FROM " + whichTable + " ORDER BY search COLLATE NOCASE";
+                    String queryString = "SELECT * FROM " + whichTable + orderBy;
                     queryCursor = newDB.rawQuery(queryString, null);
                 } else { // Exact Match
                     whereString = whereLike + "'" + searchFor + "'";
@@ -279,7 +279,8 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
     }
 
     private void displayResults(final ListView whichList, ArrayList<String> whichArray) {
-        final ArrayAdapter<String> thisAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, whichArray);
+        final ArrayAdapter<String> thisAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, whichArray);
         whichList.setAdapter(thisAdapter);
         whichList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -301,7 +302,8 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
                         shareIt(whichText);
                     }
                 });
-                alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setNegativeButton(getString(android.R.string.cancel),
+                        new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Do nothing
@@ -360,30 +362,16 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
             for (int i=0; i < myFaves.size(); i++) {
                 if (e != null) {
                     e.remove("Faves_size");
-                }
-                if (e != null) {
                     e.putInt("Faves_size", myFaves.size());
-                }
-
-                if (e != null) {
                     e.remove("Favourite_" + i);
-                }
-                if (e != null) {
                     e.putString("Favourite_" + i, myFaves.get(i));
-                }
-
-                if (e != null) {
                     e.remove("Table_" + i);
-                }
-                if (e != null) {
                     e.putString("Table_" + i, myTables.get(i));
+                    e.apply();
                 }
-            }
-            if (e != null) {
-                e.apply();
             }
         } else {
-            Toast.makeText(FlipActivity.this, "This word is ALREADY in your favourites!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(FlipActivity.this, getString(R.string.alreadyFav), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -407,19 +395,11 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
         super.onResume();
         SharedPreferences mSharedPreferences = getSharedPreferences("Prefs", Context.MODE_PRIVATE);
         String flipString = null;
-        if (mSharedPreferences != null) {
-            flipString = mSharedPreferences.getString("flipDuration", "250ms");
-        }
-        if (flipString != null) {
-            flipDuration = Long.parseLong(flipString.replaceAll("ms", ""));
-        }
-        String mPreference = null;
-        if (mSharedPreferences != null) {
-            mPreference = mSharedPreferences.getString("showScroll", "Show");
-        }
-        if (searchType == 0) if (mPreference != null) {
-            mReady = !mPreference.equals("Hide");
-        }
+        if (mSharedPreferences != null) flipString = mSharedPreferences.getString("flipDuration", "250ms");
+        if (flipString != null) flipDuration = Long.parseLong(flipString.replaceAll("ms", ""));
+        String showScroll = null;
+        if (mSharedPreferences != null) showScroll = mSharedPreferences.getString("showScroll", "Show");
+        if (searchType == 0) if (showScroll != null) mReady = !showScroll.equals("Hide");
     }
 
     public void flipIt(View v) {
