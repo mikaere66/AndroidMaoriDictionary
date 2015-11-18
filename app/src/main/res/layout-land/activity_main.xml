@@ -99,7 +99,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/sticker"
+        android:src="@mipmap/transparent"
         android:baselineAlignBottom="false"
         android:cropToPadding="false"
         android:layout_marginLeft="12dp"
