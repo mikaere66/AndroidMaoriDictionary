@@ -16,7 +16,6 @@
         \n(can get in the way when filtering results)</string>
     <string name="show_scroll">Show</string>
     <string name="hide_scroll">Hide</string>
-    <string name="swipe_or_button">Other settings, like auto-complete
-        history, last-used-language, and search-type are saved
-        throughout normal use of the app.</string>
+    <string name="swipe_or_button">Other settings, like auto-complete history,
+        selected language, and search type are saved on exiting the app</string>
 </resources>
