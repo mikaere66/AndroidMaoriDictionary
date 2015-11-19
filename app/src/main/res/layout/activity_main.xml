@@ -1,121 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/main_text_view"
+        android:id="@+id/text_view_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="21dp"
         android:layout_marginTop="10dp"
-        android:text="@string/main_text_view" />
+        android:text="@string/text_view_1"/>
+
+    <TextView
+        android:id="@+id/text_view_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_1"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/text_view_2"/>
+
+    <TextView
+        android:id="@+id/text_view_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_2"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/text_view_3"/>
 
     <AutoCompleteTextView
         android:id="@+id/main_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_3"
         android:layout_marginTop="3dp"
         android:layout_marginLeft="17dp"
         android:layout_marginStart="17dp"
         android:hint="@string/edit_text_hint"
         android:imeOptions="actionSearch"
-        android:singleLine="true" />
+        android:singleLine="true"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <RadioGroup android:id="@+id/search_for"
+        android:checkableBehavior="single"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:orientation="horizontal" >
+        android:layout_below="@id/main_edit_text"
+        android:layout_alignStart="@+id/main_edit_text"
+        android:orientation="horizontal">
 
-        <RadioGroup android:id="@+id/search_for"
-            android:checkableBehavior="single"
+        <RadioButton android:id="@+id/maori_to_english"
+            android:title="@string/m2e_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:text="@string/m2e_name"
+            android:layout_marginTop="5dp"
+            android:checked="true"/>
 
-            <RadioButton android:id="@+id/maori_to_english"
-                android:title="@string/m2e_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="@string/m2e_name"
-                android:layout_marginTop="5dp"
-                android:checked="true" />
+        <RadioButton android:id="@+id/english_to_maori"
+            android:title="@string/e2m_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="30dp"
+            android:text="@string/e2m_name"/>
 
-            <RadioButton android:id="@+id/english_to_maori"
-                android:title="@string/e2m_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:layout_marginTop="5dp"
-                android:text="@string/e2m_name" />
-
-        </RadioGroup>
+    </RadioGroup>
 
     <Spinner
         android:id="@+id/search_type"
         android:background="?android:selectableItemBackground"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/spinner_horizontal_margin"
+        android:paddingRight="@dimen/spinner_horizontal_margin"
+        android:layout_alignStart="@+id/main_edit_text"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginEnd="12dp"
         android:layout_below="@+id/search_for"
         android:entries="@array/search_type_array"
-        android:prompt="@string/search_type_prompt" />
+        android:prompt="@string/search_type_prompt"/>
 
-        <Button
-            android:id="@+id/browse_all_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/browse_all_button"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/search_type"
-            android:onClick="browseAll" />
+    <Button
+        android:id="@+id/browse_all_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/browse_all_button"
+        android:onClick="browseAll"
+        android:layout_marginTop="10dp"
+        android:layout_alignStart="@+id/text_view_3"
+        android:layout_below="@+id/search_type"/>
 
-        <Button
-            android:id="@+id/random_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/random_button"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/search_type"
-            android:layout_toRightOf="@+id/browse_all_button"
-            android:layout_toEndOf="@+id/browse_all_button"
-            android:onClick="goRandom" />
+    <Button
+        android:id="@+id/random_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/random_button"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/search_type"
+        android:layout_toEndOf="@+id/browse_all_button"
+        android:onClick="goRandom"/>
 
-        <Button
-            android:id="@+id/main_search_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/main_search_button"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/search_type"
-            android:layout_toRightOf="@+id/random_button"
-            android:layout_toEndOf="@+id/random_button" />
+    <Button
+        android:id="@+id/main_search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_search_button"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="false"
+        android:layout_below="@+id/search_type"
+        android:layout_alignEnd="@+id/main_edit_text"/>
 
-    </RelativeLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/colours"
+        android:minHeight="64dp"
+        android:minWidth="64dp"
+        android:cropToPadding="false"
+        android:src="@mipmap/colours1"
+        android:onClick="getColours"
+        android:contentDescription="@string/cols_descr"
+        android:layout_below="@+id/browse_all_button"
+        android:layout_alignStart="@+id/main_edit_text"
+        android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="64dp"
+        android:minWidth="64dp"
+        android:cropToPadding="false"
+        android:src="@mipmap/numbers1"
+        android:onClick="getNumbers"
+        android:contentDescription="@string/numb_descr"
+        android:id="@+id/imageView"
+        android:layout_alignTop="@+id/colours"
+        android:layout_alignEnd="@+id/main_edit_text"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/transparent"
-        android:baselineAlignBottom="false"
+        android:baselineAlignBottom="true"
         android:cropToPadding="false"
         android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
         android:onClick="goFaves"
-        android:contentDescription="@string/flag_description" />
+        android:contentDescription="@string/flag_descr"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"/>
 
-</LinearLayout>
+</RelativeLayout>

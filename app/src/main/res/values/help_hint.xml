@@ -9,5 +9,7 @@
     <string name="help_hint_7">Search history is saved for use next time.</string>
     <string name="help_hint_8">Add words to favourites for future reference.</string>
     <string name="help_hint_9">Share a word definition with friends or family.</string>
-    <string name="help_hint_10">Don\'t be fooled by that fancy back-arrow.</string>
+    <string name="help_hint_10">View most Colours with one click</string>
+    <string name="help_hint_11">View most Numbers with one click.</string>
+    <string name="help_hint_12">Don\'t be fooled by that fancy back-arrow.</string>
 </resources>

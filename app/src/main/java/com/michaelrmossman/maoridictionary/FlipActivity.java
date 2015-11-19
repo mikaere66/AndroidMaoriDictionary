@@ -68,13 +68,14 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
     private ListView mEnglishList;
     private ListView mMaoriList;
     private Button flipButton;
-    private Button upButton;
     private TextView textView0;
     private Long flipDuration;
     private Display mDisplay;
     private String searchStr;
     private Integer fuzzyLog;
     private Integer randWord;
+    private Integer getColours;
+    private Integer getNumbers;
     private Integer searchType;
 
     @SuppressLint("InflateParams")
@@ -89,7 +90,7 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
         mEnglishList.setOnScrollListener(this);
         textView0 = (TextView) findViewById(R.id.textView0);
         flipButton = (Button) findViewById(R.id.flip_button);
-        upButton = (Button) findViewById(R.id.back_to_top);
+        Button upButton = (Button) findViewById(R.id.back_to_top);
         mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         LayoutInflater inflate = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // https://possiblemobile.com/2013/05/layout-inflation-as-intended/
@@ -122,7 +123,10 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
         searchStr = b.getString("searchStr", ""); // Defaults to empty string
         fuzzyLog = b.getInt("fuzzyLog", 0); // Fuzzy logic defaults to 0 if not passed
         randWord = b.getInt("randWord", 0); // Random word defaults to 0 if not passed
+        getColours = b.getInt("getColours", 0); // Get colours defaults to 0 if not passed
+        getNumbers = b.getInt("getNumbers", 0); // Get numbers defaults to 0 if not passed
         // Add cumulative value of the variables to easily refer to search type later
+        Integer getSpecial = getColours + getNumbers;
         searchType = searchStr.length() + fuzzyLog + randWord;
         // Decide from tableName which list to populate & if to search BOTH languages
         if (tableName.equals(getString(R.string.m2e_table))) {
@@ -140,37 +144,43 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
                 switchText("e2m");
             }
         }
-        if (searchType > 0) {
-            hideControls();
+        if (searchType > 0 || getSpecial > 0) {
+            // Hide flip & back to top buttons if flip isn't logical
+            if (getSpecial == 0) {
+                flipButton.setVisibility(View.GONE);// Hide flip button for normal search & random
+                upButton.setVisibility(View.GONE);  // Hide the Back to Top button
+            }
             if (myAB != null) {
+                String searchType;
+                if (getColours == 1) {
+                    searchType = "Colours";
+                } else if (getNumbers == 1) {
+                    searchType = "Numbers";
+                } else {
+                    searchType = "Translation";
+                }
                 // From tableName, work out the To and From languages, replacing special chars if necessary
                 String tmpArray[] = tableName.split("_");
                 String tmpString = tmpArray[0].substring(0,1).toUpperCase(Locale.ENGLISH)
                         + tmpArray[0].substring(1, tmpArray[0].length()).replace("a", "ā")
                         + " to " + tmpArray[2].substring(0,1).toUpperCase(Locale.ENGLISH)
-                        + tmpArray[2].substring(1, tmpArray[2].length()).replace("a", "ā") + " Translation";
+                        + tmpArray[2].substring(1, tmpArray[2].length()).replace("a", "ā") + " " + searchType;
                 myAB.setTitle(tmpString);
             }
         }
     }
 
-    private void hideControls() {
-        flipButton.setVisibility(View.GONE);// Hide flip button for normal search & random
-        upButton.setVisibility(View.GONE);  // Hide the Back to Top button
-        textView0.setVisibility(View.GONE); // Hide blurb about filtering search results
-    }
-
     private void searchMaori() {
-        openAndQueryDatabase(getString(R.string.m2e_table), mMaoriList, mResults, searchStr, fuzzyLog, randWord);
+        openAndQueryDatabase(getString(R.string.m2e_table), mMaoriList, mResults, searchStr);
         displayResults(mMaoriList, mResults);
     }
 
     private void searchEnglish() {
-        openAndQueryDatabase(getString(R.string.e2m_table), mEnglishList, eResults, searchStr, fuzzyLog, randWord);
+        openAndQueryDatabase(getString(R.string.e2m_table), mEnglishList, eResults, searchStr);
         displayResults(mEnglishList, eResults);
     }
 
-    private void openAndQueryDatabase(String whichTable, final ListView whichList, ArrayList<String> whichArray, String searchFor, Integer fuzzyLog, Integer randWord) {
+    private void openAndQueryDatabase(String whichTable, final ListView whichList, ArrayList<String> whichArray, String searchFor) {
         // Now the real fun starts =)
         try {
             final DBHelper dbHelper = new DBHelper(this.getApplicationContext());
@@ -197,6 +207,10 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
                 } else if (fuzzyLog == 2) { // Extra Fuzzy
                     whereString = whereLike + "'%" + searchFor + "%'";
                     queryCursor = newDB.rawQuery(selectFrom + whichTable + whereString + orderBy, null);
+                } else if (getColours == 1) { // Get Colours
+                    queryCursor = newDB.rawQuery(selectFrom + whichTable + " WHERE context1 = 'colour' ORDER BY _id", null);
+                } else if (getNumbers == 1) { // Get Numbers
+                    queryCursor = newDB.rawQuery(selectFrom + whichTable + " WHERE context1 = 'number' ORDER BY _id", null);
                 } else if (searchFor.length() == 0) { // Browse All
                     String queryString = "SELECT * FROM " + whichTable + orderBy;
                     queryCursor = newDB.rawQuery(queryString, null);
@@ -204,9 +218,13 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
                     whereString = whereLike + "'" + searchFor + "'";
                     queryCursor = newDB.rawQuery(selectFrom + whichTable + whereString + orderBy, null);
                 }
-                if (queryCursor.getCount() > 10) whichList.setTextFilterEnabled(true); // Enable text filtering for real searches
             }
             if (queryCursor.moveToFirst()) {
+                if (queryCursor.getCount() > 12) {
+                    whichList.setTextFilterEnabled(true); // Enable text filtering for real searches
+                } else {
+                    textView0.setVisibility(View.GONE); // Hide blurb about filtering search results
+                }
                 if (searchType > 0) { // Dynamic header row with blurb about adding to favourites
                     TextView textView1 = new TextView(this);
                     int sp = (int) (getResources().getDimension(R.dimen.list_item_min_height)/getResources().getDisplayMetrics().density);

@@ -16,7 +16,7 @@
     <string name="help_text_4">Pressing the RANDOM button will show 5 words
         (chosen at random) from the selected language</string>
     <string name="help_text_5">You can filter
-        the search results if there are more than 10 listings. If your device has a soft
+        the search results if there are more than 12 listings. If your device has a soft
         keyboard, tap the area that says Filter results. If you have a hardware
         keyboard, just start typing. Another feature is the saving of your Search
         preferences for next time; and the third is AutoComplete history.</string>
@@ -29,10 +29,14 @@
         You can access all your favourites in one place by tapping the Māori
         flag on the \"home\" page. To remove a favourite from that list,
         long-press the word, and choose the appropriate option</string>
-    <string name="help_text_9">Also, you can choose to Share a word
+    <string name="help_text_9">You can choose to Share a word
         via Email, Facebook, Text or whatever. Just choose that option from the same pop-up
         menu. Options vary according to the apps you have installed on your device</string>
-    <string name="help_text_10">Note that the left-arrow on the title bar is actually
+    <string name="help_text_10">To easily view most of the colours in either Maori or
+        English, just click the Colours icon on the \"home\" page.</string>
+    <string name="help_text_11">To easily view most of the numbers in either Maori or
+        English, just click the Numbers icon on the \"home\" page.</string>
+    <string name="help_text_12">Note that the left-arrow on the title bar is actually
         a home button, so be aware that this will return you directly to the \"home\"
         page, bypassing any other screen you may have been viewing in the meantime</string>
 </resources>

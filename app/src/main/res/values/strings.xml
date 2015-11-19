@@ -14,9 +14,9 @@
     <string name="action_help">Help / Usage</string>
     <string name="action_settings">Settings</string>
 
-    <string name="main_text_view">Translate Māori to English or English to Māori
-        \n\nSearch either way or Browse All in 2 long lists :
-        \n\nTry the Random button for 5 random words &#8230;</string>
+    <string name="text_view_1">Translate Māori to English or English to Māori</string>
+    <string name="text_view_2">Search either way or Browse All in 2 long lists :</string>
+    <string name="text_view_3">Try the Random button for 5 random words &#8230;</string>
     <string name="edit_text_hint">Enter word/phrase (without macrons)</string>
 
     <string name="search_type_prompt">Choose a Search type</string>
@@ -28,8 +28,10 @@
 
     <string name="browse_all_button">Browse All</string>
     <string name="random_button">Random</string>
-    <string name="main_search_button">Search »</string>
+    <string name="main_search_button">Go Search »</string>
 
-    <string name="flag_description">Māori Flag</string>
+    <string name="cols_descr">Colours Icon</string>
+    <string name="numb_descr">Numbers Icon</string>
+    <string name="flag_descr">Māori Flag</string>
     <string name="bullet_point">•\u00A0</string>
 </resources>

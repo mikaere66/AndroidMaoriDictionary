@@ -29,7 +29,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements TextWatcher, View.OnClickListener {
     // String of dummy searches for AutoComplete textview
-    private final String[] AutoCmplItems = {"canoe","waka"};
+    private final String[] AutoCmplItems = {"canoe", "waka"};
     // Database table names
     private final String tableNameM2E = "maori_to_english";
     private final String tableNameE2M = "english_to_maori";
@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mDialog = new ProgressDialog(this);
-
         searchRadio = (RadioGroup) findViewById(R.id.search_for);
         searchMaori = (RadioButton) findViewById(R.id.maori_to_english);
         searchType = (Spinner) findViewById(R.id.search_type);
@@ -68,33 +67,41 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
                 if (itemId == EditorInfo.IME_ACTION_SEARCH) {
                     doSearch();
                     return true;
-                } return false;
+                }
+                return false;
             }
         });
-        // Used for shake effect if no text entered into Search field
         View searchButton = findViewById(R.id.main_search_button);
+        // Used for shake effect if no text entered into Search field
         searchButton.setOnClickListener(this);
-        // Get previously saved search prefs & any autocomplete words
         getSharedPrefs();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mDialog.isShowing()) mDialog.dismiss();
+    }
+
     private void getSharedPrefs() {
-        // Access the device's key-value storage
+        // Get previously saved search prefs & any autocomplete words
         mySharedPrefs = getSharedPreferences("Prefs", Context.MODE_PRIVATE);
-        // Read saved user prefs (defaults to 0 if not found)
-        Integer prefLang = mySharedPrefs.getInt(PREF_LANG, 0);
-        Integer prefType = mySharedPrefs.getInt(PREF_TYPE, 0);
-        // If value for RadioButton is valid, assign Checked
-        if (prefLang > 0) searchRadio.check(prefLang);
-        else searchMaori.setChecked(true);
-        // If value for Spinner is valid, assign Selected
-        if (prefType > 0) searchType.setSelection(prefType);
-        else searchType.setSelection(0);
-        // Read in AutoComplete array & add to history
-        int arraySize = mySharedPrefs.getInt("Status_size", 0);
-        for (int i = 0; i < arraySize; i++) {
-            String addItem = mySharedPrefs.getString("Status_" + i, null);
-            if (!myList.contains(addItem)) myList.add(addItem);
+        if (mySharedPrefs != null) {
+            // Read saved user prefs (defaults to 0 if not found)
+            Integer prefLang = mySharedPrefs.getInt(PREF_LANG, 0);
+            Integer prefType = mySharedPrefs.getInt(PREF_TYPE, 0);
+            // If value for RadioButton is valid, assign Checked
+            if (prefLang > 0) searchRadio.check(prefLang);
+            else searchMaori.setChecked(true);
+            // If value for Spinner is valid, assign Selected
+            if (prefType > 0) searchType.setSelection(prefType);
+            else searchType.setSelection(0);
+            // Read in AutoComplete array & add to history
+            int arraySize = mySharedPrefs.getInt("Status_size", 0);
+            for (int i = 0; i < arraySize; i++) {
+                String addItem = mySharedPrefs.getString("Status_" + i, null);
+                if (!myList.contains(addItem)) myList.add(addItem);
+            }
         }
     }
 
@@ -118,12 +125,6 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        if(mDialog.isShowing()) mDialog.dismiss();
-    }
-
-    @Override
     public void onBackPressed() {
         saveSharedPrefs();
         super.onBackPressed();
@@ -134,7 +135,6 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
         mDialog.setCancelable(false);
         mDialog.setProgress(0);
         mDialog.show();
-
         Intent bIntent = new Intent(this, FlipActivity.class);
         Bundle b = new Bundle();
         if (searchMaori.isChecked()) tableName = tableNameM2E;
@@ -153,6 +153,28 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
         b.putInt("randWord", 1);
         rIntent.putExtras(b);
         startActivity(rIntent);
+    }
+
+    public void getColours(View view) {
+        Bundle b = new Bundle();
+        Intent cIntent = new Intent(this, FlipActivity.class);
+        if (searchMaori.isChecked()) tableName = tableNameM2E;
+        else tableName = tableNameE2M;
+        b.putString("tableName", tableName);
+        b.putInt("getColours", 1);
+        cIntent.putExtras(b);
+        startActivity(cIntent);
+    }
+
+    public void getNumbers(View view) {
+        Bundle b = new Bundle();
+        Intent nIntent = new Intent(this, FlipActivity.class);
+        if (searchMaori.isChecked()) tableName = tableNameM2E;
+        else tableName = tableNameE2M;
+        b.putString("tableName", tableName);
+        b.putInt("getNumbers", 1);
+        nIntent.putExtras(b);
+        startActivity(nIntent);
     }
 
     public void goFaves(View view) {

@@ -12,5 +12,7 @@
     <string name="help_title_7">Auto Complete History</string>
     <string name="help_title_8">Favourites</string>
     <string name="help_title_9">Sharing</string>
-    <string name="help_title_10">Back Arrow</string>
+    <string name="help_title_10">Colours</string>
+    <string name="help_title_11">Numbers</string>
+    <string name="help_title_12">Back Arrow</string>
 </resources>
