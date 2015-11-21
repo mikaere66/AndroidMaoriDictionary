@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
     }
 
     public void goFaves(View view) {
-       Intent fIntent = new Intent(this, FavouritesActivity.class);
+        Intent fIntent = new Intent(this, FavouritesActivity.class);
         startActivity(fIntent);
     }
 
@@ -212,15 +212,11 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
             Toast.makeText(this, "Please choose a Search type first!",
                     Toast.LENGTH_SHORT).show();
         } else {
-            shakeIt();
+            Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+            findViewById(R.id.main_edit_text).startAnimation(shake);
             Toast.makeText(this, "Please enter a Search word or phrase!",
                     Toast.LENGTH_SHORT).show();
         }
-    }
-
-    public void shakeIt() {
-        Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
-        findViewById(R.id.main_edit_text).startAnimation(shake);
     }
 
     @Override

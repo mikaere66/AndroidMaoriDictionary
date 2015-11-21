@@ -96,8 +96,8 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
         // https://possiblemobile.com/2013/05/layout-inflation-as-intended/
         if (mDialogText == null) {
             mDialogText = (TextView) inflate.inflate(R.layout.list_position, null);
+            mDialogText.setVisibility(View.INVISIBLE);
         }
-        mDialogText.setVisibility(View.INVISIBLE);
         mHandler.post(new Runnable() {
             public void run() { // mReady = true;
                 WindowManager windowManager;
@@ -365,6 +365,7 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
         }
         String thisWord = thisText[1].substring(0, thisText[1].indexOf("\n")).trim();
         SharedPreferences.Editor e = null;
+        String myMsg;
         if (mSharedPreferences != null) {
             e = mSharedPreferences.edit();
         }
@@ -388,9 +389,11 @@ public class FlipActivity extends AppCompatActivity implements ListView.OnScroll
                     e.apply();
                 }
             }
+            myMsg = thisWord + " " + getString(R.string.successFav);
         } else {
-            Toast.makeText(FlipActivity.this, getString(R.string.alreadyFav), Toast.LENGTH_SHORT).show();
+            myMsg = thisWord + " " + getString(R.string.alreadyFav);
         }
+        Toast.makeText(FlipActivity.this, myMsg, Toast.LENGTH_SHORT).show();
     }
 
     private void shareIt(String whichText) {

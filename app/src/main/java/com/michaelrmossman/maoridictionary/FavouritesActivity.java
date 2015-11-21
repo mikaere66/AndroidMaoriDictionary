@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ShareActionProvider;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,6 @@ public class FavouritesActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
-
         mFavouritesList = (ListView) findViewById(R.id.list_fav);
         gotResult = false;
         openAndQueryDatabase();
@@ -47,7 +47,8 @@ public class FavouritesActivity extends AppCompatActivity {
 
     private void openAndQueryDatabase() {
         SharedPreferences mySharedPrefs = getSharedPreferences("Faves", Context.MODE_PRIVATE);
-        int arraySize = mySharedPrefs.getInt("Faves_size", 0);
+        int arraySize = 0;
+        if (mySharedPrefs != null) arraySize = mySharedPrefs.getInt("Faves_size", 0);
         if (arraySize > 0) {
             gotResult = true;
             TextView textView1 = new TextView(this);
@@ -171,32 +172,40 @@ public class FavouritesActivity extends AppCompatActivity {
                 String[] thisText = faveName.split(" : ", 2); // Limit array to a size of 2
                 String thisWord = thisText[1].substring(0, thisText[1].indexOf("\n")).trim();
                 SharedPreferences mSharedPreferences = getSharedPreferences("Faves", Context.MODE_PRIVATE);
-                int arraySize = mSharedPreferences.getInt("Faves_size", 0);
-                if (arraySize == 1) {
-                    mSharedPreferences.edit().clear().apply();
-                } else {
-                    SharedPreferences.Editor e = mSharedPreferences.edit();
-                    for (int i = 0; i < arraySize; i++) {
-                        String addFave = mSharedPreferences.getString("Favourite_" + i, "");
-                        String addTable = mSharedPreferences.getString("Table_" + i, "");
-                        if (!addFave.equals(thisWord)) {
-                            myFaves.add(addFave);
-                            myTables.add(addTable);
+                int arraySize;
+                String myMsg;
+                if (mSharedPreferences != null) {
+                    arraySize = mSharedPreferences.getInt("Faves_size", 0);
+                    if (arraySize == 1) {
+                        mSharedPreferences.edit().clear().apply();
+                    } else {
+                        SharedPreferences.Editor e = mSharedPreferences.edit();
+                        for (int i = 0; i < arraySize; i++) {
+                            String addFave = mSharedPreferences.getString("Favourite_" + i, "");
+                            String addTable = mSharedPreferences.getString("Table_" + i, "");
+                            if (!addFave.equals(thisWord)) {
+                                myFaves.add(addFave);
+                                myTables.add(addTable);
+                            }
                         }
+                        for (int i = 0; i < myFaves.size(); i++) {
+                            e.remove("Faves_size");
+                            e.putInt("Faves_size", myFaves.size());
+                            e.remove("Favourite_" + i);
+                            e.putString("Favourite_" + i, myFaves.get(i));
+                            e.remove("Table_" + i);
+                            e.putString("Table_" + i, myTables.get(i));
+                            myMsg = thisWord + " " + getString(R.string.removeFav);
+                            Toast.makeText(FavouritesActivity.this, myMsg, Toast.LENGTH_SHORT).show();
+                        }
+                        e.apply();
                     }
-                    for (int i = 0; i < myFaves.size(); i++) {
-                        e.remove("Faves_size");
-                        e.putInt("Faves_size", myFaves.size());
-                        e.remove("Favourite_" + i);
-                        e.putString("Favourite_" + i, myFaves.get(i));
-                        e.remove("Table_" + i);
-                        e.putString("Table_" + i, myTables.get(i));
-                    }
-                    e.apply();
+                    Intent nIntent = getIntent();
+                    finish();
+                    startActivity(nIntent);
+                } else {
+                    Toast.makeText(FavouritesActivity.this, getString(R.string.favError), Toast.LENGTH_SHORT).show();
                 }
-                Intent nIntent = getIntent();
-                finish();
-                startActivity(nIntent);
             }
         });
         alertDialogBuilder.setNeutralButton("Share this Word", new DialogInterface.OnClickListener() {
